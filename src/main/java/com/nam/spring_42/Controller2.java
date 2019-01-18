@@ -20,6 +20,6 @@ public class Controller2 {
 
     @RequestMapping("/x3")
     public String index3(@RequestParam(value="id", defaultValue = "11") String id, @RequestParam(value = "gid", defaultValue = "22") String gid){
-        return String.format("<h2>ID = %s</h2><h4>GID = %s</h4>", id, gid);
+        return String.format("<h3>ID = %s</h3><h4>GID = %s</h4>", id, gid);
     }
 }
