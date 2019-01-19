@@ -16,4 +16,9 @@ public class Controller {
     public String index42(@RequestParam(value="name", defaultValue = "xxx") String name){
         return String.format("<h1>Hello!!</h1><br /><h2>%s</h2>", name);
     }
+
+    @RequestMapping("/myuser")
+    public User myuser(){
+        return new User();
+    }
 }
