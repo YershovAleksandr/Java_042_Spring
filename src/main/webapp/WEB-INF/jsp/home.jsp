@@ -23,13 +23,12 @@ pageContext.setAttribute("foo", bar);
     <h1></h1>
     <p>The time on the server is ${serverTime}.</p>
 
-    <h2>${usr.id}</h2>
-    <%--
-    <c:forEach items="${users}" var="user">
-    <h2>${user.id}</h2>
-    <h2>${user.name}</h2>
+    <h2>Hello World</h2>
+
+    <c:forEach items="${usr}" var="u">
+    <h2>${u.getId()}</h2>
+    <h2>${u.getName()}</h2>
     </c:forEach>
-    --%>
 
     <hr>
     <table>
