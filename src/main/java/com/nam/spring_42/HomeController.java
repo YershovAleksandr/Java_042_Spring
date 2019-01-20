@@ -25,10 +25,15 @@ public class HomeController {
 
         model.addAttribute("serverTime", String.format("Time is: %s", new Date().toString()));
 
+        User u = new User();
 
+        u.setId(11);
+        u.setName("22");
+
+        users.add(u);
         users.add(new User());
 
-        model.addAttribute("usr", new User());
+        model.addAttribute("usr", users);
         //model.addAttribute("users", users);
 
         return "home";
