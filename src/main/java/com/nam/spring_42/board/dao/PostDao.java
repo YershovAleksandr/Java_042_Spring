@@ -16,8 +16,8 @@ public class PostDao implements IDAO<Post> {
     }
 
     @Override
-    public Optional<Post> get(int id) {
-        return Optional.ofNullable(posts.get(id));
+    public Post get(int id) {
+        return posts.get(id);
     }
 
     @Override
