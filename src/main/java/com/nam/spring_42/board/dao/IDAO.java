@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface IDAO <T>{
     public List<T> getAll();
-    public Optional<T> get(int id);
+    public T get(int id);
     public void update(T entity);
     public void create(T entity);
     public void delete(T entity);
