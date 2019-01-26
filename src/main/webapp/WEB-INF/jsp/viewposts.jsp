@@ -5,11 +5,11 @@
 <title>View Posts</title>
 <style>
 
-h3{
+h3 {
     text-align: center;
 }
 
-table, td{
+table, td {
     border: 1px solid black;
 }
 
@@ -17,6 +17,10 @@ table {
     background-color: gray;
     border-collapse: collapse;
     width: 600px;
+    margin: auto;
+}
+
+form {
     margin: auto;
 }
 
@@ -48,7 +52,7 @@ table {
 
 </p>
 
-
+<jsp:include page="postform.jsp" />
 
 </body>
 </html>
