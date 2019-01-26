@@ -4,8 +4,7 @@ import com.nam.spring_42.board.model.Post;
 import com.nam.spring_42.board.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,15 +36,32 @@ public class PostController {
         PostService.postCreate(post2);
     }
 
-    @GetMapping("/viewposts")
+    @RequestMapping("/viewposts")
     public String viewPosts(Model model){
 
         model.addAttribute("foo", "bar");
 
-        createPosts();
+        //createPosts();
 
         model.addAttribute("posts", PostService.getAllPosts());
 
+
         return "viewposts";
+    }
+
+    @GetMapping("/createpost")
+    public String viewPosts(@RequestParam(value = "title", defaultValue = "t") String title, @RequestParam(value = "text", defaultValue = "tt") String text){
+
+        //System.out.printf("\ntitle = %s text = %s", title, text);
+
+        Post post = new Post();
+
+        //post.setId();
+        post.setTitle(title);
+        post.setText(text);
+
+        PostService.postCreate(post);
+
+        return "redirect:/viewposts";
     }
 }
