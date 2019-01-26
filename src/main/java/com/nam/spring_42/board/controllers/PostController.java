@@ -2,12 +2,15 @@ package com.nam.spring_42.board.controllers;
 
 import com.nam.spring_42.board.model.Post;
 import com.nam.spring_42.board.services.PostService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+
+@Controller
 public class PostController {
 
     @GetMapping("/posts")
@@ -15,7 +18,7 @@ public class PostController {
         return PostService.getAllPosts();
     }
 
-    @GetMapping("/posts/create")
+    @GetMapping("/postscreate")
     public void createPosts(){
         Post post1 = new Post();
 
@@ -34,5 +37,15 @@ public class PostController {
         PostService.postCreate(post2);
     }
 
-    //@GetMapping("/")
+    @GetMapping("/viewposts")
+    public String viewPosts(Model model){
+
+        model.addAttribute("foo", "bar");
+
+        createPosts();
+
+        model.addAttribute("posts", PostService.getAllPosts());
+
+        return "viewposts";
+    }
 }
