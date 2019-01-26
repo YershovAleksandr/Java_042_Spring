@@ -28,6 +28,7 @@ public class PostDao implements IDAO<Post> {
     @Override
     public void create(Post entity) {
         posts.add(entity);
+        entity.setId(posts.indexOf(entity));
     }
 
     @Override
