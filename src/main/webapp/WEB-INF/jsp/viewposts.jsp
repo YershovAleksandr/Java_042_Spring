@@ -23,6 +23,17 @@ table {
     margin: auto;
 }
 
+.tableid {
+    background-color: red;
+    width: 20px;
+    text-align: center;
+}
+
+.tabletitle {
+    text-align: center;
+    background-color: #AAAAAA;
+}
+
 form {
     margin: auto;
 }
