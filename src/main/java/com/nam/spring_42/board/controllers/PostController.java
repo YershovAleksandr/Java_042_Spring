@@ -49,7 +49,7 @@ public class PostController {
         return "viewposts";
     }
 
-    @GetMapping("/createpost")
+    @PostMapping("/createpost")
     public String viewPosts(@RequestParam(value = "title", defaultValue = "t") String title, @RequestParam(value = "text", defaultValue = "tt") String text){
 
         //System.out.printf("\ntitle = %s text = %s", title, text);
