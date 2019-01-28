@@ -1,0 +1,1 @@
+INSERT INTO posts (title, text) VALUES ('Я у мамки хакер', 'И люблю пирожки с капусточкой');
