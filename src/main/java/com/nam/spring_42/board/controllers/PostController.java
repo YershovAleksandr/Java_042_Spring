@@ -5,7 +5,9 @@ import com.nam.spring_42.board.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -49,11 +51,22 @@ public class PostController {
         return "viewposts";
     }
 
+    @RequestMapping("/viewpost")
+    public ModelAndView viewPost(@RequestParam(value = "id", defaultValue = "42") String id){
+        ModelAndView model = new ModelAndView("viewposts");
+        model.addObject("foo", "bar");
+
+        List<Post> postList = new ArrayList<>();
+        Post post = PostService.getPostById(Integer.valueOf(id));
+        postList.add(post);
+
+        model.addObject("posts", postList);
+
+        return model;
+    }
+
     @PostMapping("/createpost")
     public String viewPosts(@RequestParam(value = "title", defaultValue = "t") String title, @RequestParam(value = "text", defaultValue = "tt") String text){
-
-        //System.out.printf("\ntitle = %s text = %s", title, text);
-
         Post post = new Post();
 
         //post.setId();
