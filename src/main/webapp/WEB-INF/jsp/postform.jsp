@@ -4,11 +4,11 @@
 <table>
 <tr>
 <td>Title:</td>
-<td><input type="text" name="title"></td>
+<td><input type="text" name="title" style="width:99%"></td>
 </tr>
 <tr>
 <td>Text:</td>
-<td><textarea rows="5" cols="50" name="text"></textarea></td>
+<td><textarea rows="5" cols="50" name="text" style="width:99%; height:100%"></textarea></td>
 </tr>
 <tr>
 <td colspan="2"><input type="submit" value="GOOO"></td>
