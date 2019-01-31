@@ -107,16 +107,19 @@ public class PostDao implements IDAO<Post> {
             return null;
         }
 
-        Statement statement = null;
+        PreparedStatement pStatement = null;
         ResultSet resultSet = null;
 
-        Post post = new Post();
+        Post post = null;
 
         try {
-            statement = getConnection().createStatement();
-            resultSet = statement.executeQuery(String.format("select * FROM posts WHERE id = %d", id));
+            pStatement = getConnection().prepareStatement("select * FROM posts WHERE id = ?");
+            pStatement.setInt(1, id);
+            resultSet = pStatement.executeQuery();
 
             while(resultSet.next()){
+                post = new Post();
+
                 post.setId(resultSet.getInt("id"));
                 post.setTitle(resultSet.getString("title"));
                 post.setText(resultSet.getString("text"));
@@ -133,9 +136,9 @@ public class PostDao implements IDAO<Post> {
                 log.error("Can't close connection", e);
             }
 
-            if (statement != null) {
+            if (pStatement != null) {
                 try {
-                    statement.close();
+                    pStatement.close();
                 } catch (SQLException e) {
                     log.error("Can't close statement", e);
                 }
