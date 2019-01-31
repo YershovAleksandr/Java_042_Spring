@@ -1,6 +1,7 @@
 package com.nam.spring_42.board.dao;
 
 import com.nam.spring_42.board.model.Post;
+import com.nam.spring_42.board.utils.Tools;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,30 +16,19 @@ public class PostDao implements IDAO<Post> {
     private List<Post> posts = new ArrayList<>();
 
     private static Connection getConnection(){
-
-        final String url = "jdbc:mysql://localhost:3306/";
-        final String db = "testboard42";
-        final String param = "?useUnicode=true&characterEncoding=utf-8";
-        final String login = "testuser";
-        final String password = "5550635";
-
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Tools.driverClassName);
         } catch(ClassNotFoundException e){
             log.error("Can't get class. No driver found", e);
-
-            //todo
             return null;
         }
 
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection(url + db + param, login, password);
+            connection = DriverManager.getConnection(Tools.url, Tools.username, Tools.password);
         } catch(SQLException e){
             log.error("Can't get connection. Incorrect URL", e);
-
-            //todo
             return null;
         }
 
