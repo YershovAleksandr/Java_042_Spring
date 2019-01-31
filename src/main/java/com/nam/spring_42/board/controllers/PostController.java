@@ -61,23 +61,33 @@ public class PostController {
         doit();
 
         model.addAttribute("foo", "bar");
-
-        //createPosts();
-
         model.addAttribute("posts", PostService.getAllPosts());
-
 
         return "viewposts";
     }
 
     @RequestMapping("/viewpost")
-    public ModelAndView viewPost(@RequestParam(value = "id", defaultValue = "42") String id){
+    public ModelAndView viewPost(@RequestParam(value = "id") String id){
+        doit();
+
+        int idInt = 0;
+
+        try{
+            idInt = Integer.valueOf(id);
+        }catch (NumberFormatException e){
+            System.out.println("WTF??? id " + id);
+        }
+
         ModelAndView model = new ModelAndView("viewposts");
         model.addObject("foo", "bar");
 
-        List<Post> postList = new ArrayList<>();
-        Post post = PostService.getPostById(Integer.valueOf(id));
-        postList.add(post);
+        List<Post> postList = null;
+        Post post = PostService.getPostById(idInt);
+
+        if (post != null) {
+            postList = new ArrayList<>();
+            postList.add(post);
+        }
 
         model.addObject("posts", postList);
 
