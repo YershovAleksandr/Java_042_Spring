@@ -85,14 +85,15 @@ public class PostController {
     }
 
     @PostMapping("/createpost")
-    public String viewPosts(@RequestParam(value = "title", defaultValue = "t") String title, @RequestParam(value = "text", defaultValue = "tt") String text){
-        Post post = new Post();
+    public String viewPosts(@RequestParam(value = "title") String title, @RequestParam(value = "text") String text){
+        if (!title.equals("") && !text.equals("")){
+            Post post = new Post();
 
-        //post.setId();
-        post.setTitle(title);
-        post.setText(text);
+            post.setTitle(title);
+            post.setText(text);
 
-        PostService.postCreate(post);
+            PostService.postCreate(post);
+        }
 
         return "redirect:/viewposts";
     }
