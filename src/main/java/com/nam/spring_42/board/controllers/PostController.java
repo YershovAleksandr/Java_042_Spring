@@ -2,6 +2,8 @@ package com.nam.spring_42.board.controllers;
 
 import com.nam.spring_42.board.model.Post;
 import com.nam.spring_42.board.services.PostService;
+import com.nam.spring_42.board.utils.Tools;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +40,25 @@ public class PostController {
         PostService.postCreate(post2);
     }
 
+    @Value("${spring.datasource.url}")
+    public String url;
+    @Value("${spring.datasource.username}")
+    public String username;
+    @Value("${spring.datasource.password}")
+    public String password;
+    @Value("${spring.datasource.driver-class-name}")
+    public String driverClassName;
+
+    public void doit(){
+        Tools.url = url;
+        Tools.username = username;
+        Tools.password = password;
+        Tools.driverClassName = driverClassName;
+    }
+
     @RequestMapping("/viewposts")
     public String viewPosts(Model model){
+        doit();
 
         model.addAttribute("foo", "bar");
 
