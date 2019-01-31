@@ -13,12 +13,11 @@ h3 {
 }
 
 table, td {
-    border: 1px solid black;
+    border: 0px;
 }
 
 table {
     background-color: gray;
-    border-collapse: collapse;
     width: 600px;
     margin: auto;
 }
